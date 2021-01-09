@@ -1,0 +1,80 @@
+#Philip Huang
+#2/9/19
+#Assignment 5
+
+#1. Number multiplied by 10 until greater product is greater than 10,000
+
+number = int(input("Enter a number: "))
+product = number * 10
+print("The product is", product)
+
+while product <= 10000:
+    product *= 10
+    print("The product is", product)
+
+#This is a shorter answer, but it does not assign number * 10 to product,
+#So I typed the same print statement twice.
+    
+##number = int(input("Enter a number: "))
+##product = number
+##
+##while product <= 10000:
+##    product *= 10
+##    print("The product is", product)
+
+
+#2. Adds two numbers, displays the sum, and repeats if desired
+
+choice = "Y"
+
+while choice == "Y":
+    number_1 = int(input("Enter a number: "))    
+    number_2 = int(input("Enter a number: "))
+    sum_num = number_1 + number_2
+    print("The sum is: ", sum_num)
+    choice = input("Do you want to repeat Yes(Y) or No(N): ")
+
+#3. Prints all the three digit numbers divisible by 17
+
+#Pseudocode: First we need to start counting from 100.
+#Then determine if the three digit number is divisible by 17.
+#The loop is stop when it is four digits, which is 1000.
+
+number = 100
+while number < 1000:
+    if number % 17 == 0:
+        print("This number is three digits and divisible by 17: ", number)
+    number += 1
+
+#4. Prints out for each Hour, the Distance traveled
+speed = int(input("Enter speed (mph): "))
+hour = int(input("Enter number of hours traveled: "))
+
+
+print("Hour : Distance (m)")
+for time in range(hour):
+    time += 1
+    distance = speed * time
+    print(time,":", distance)
+
+#5. Display sum of series of positive integers
+number = 0
+sum_num = 0
+while number >= 0:
+    sum_num += number
+    number = int(input("Enter a positive number: "))
+   
+print("The sum is: ", sum_num)
+
+6.
+num_organism = int(input("Enter starting number of organisms: "))
+avrg_daily_increase = int(input("Enter in percentage average daily increase: "))
+days = int(input("Enter number of days to multiply: "))
+
+print("Days : Population")
+
+for number in range(days):
+    population = num_organism * ((1+(avrg_daily_increase/100)) ** number)
+    number += 1
+    print(number,":", population)
+    
