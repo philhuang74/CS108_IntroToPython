@@ -1,0 +1,110 @@
+#Philip Huang
+#1/20/19
+#Assignment 2
+
+#Section Multiple Choice 
+
+# Multi Choice Question 1: variable
+# Multi Choice Question 2: either single-quotes or double-quotes
+# Multi Choice Question 3: RAM
+# Multi Choice Question 4: CPU
+# Multi Choice Question 5: 17 = x
+
+#Section Program
+
+#1. Prints the height of person
+
+height = float(input("Please enter your height in inches: "))
+print ("Your height is" ,height, "inches.")
+
+#2. Prints the favorite color of person
+
+color = input("Please enter your favorite color: ")
+print ("Your favorite color is" ,color)
+
+
+# 3. 11
+# 4. 5
+
+#5. Gives projected amount of profit given number of sales
+
+total_sales = int(input("Please enter your total sales: "))
+profit = total_sales * 0.23
+print("Your profit is:" ,profit, "dollars.")
+
+#6. Converts amount of land in square feet to acres
+
+square_feet = int(input("Enter the total square feet in the piece of land: "))
+acre = square_feet / 43560
+print("You have" ,acre, "acres of land.")
+
+#7. Gives the subtotal and tax on each item, and the current total cost
+
+price_1 = float(input("Please enter the price of Item 1: "))
+subtotal_1 = price_1 * 1.07
+tax_item_1 = price_1 * 0.07
+total_1 = subtotal_1
+print("The subtotal is" ,subtotal_1, "dollars.")
+print("The tax on Item 1 is:" ,tax_item_1, "dollars.")
+print("The current total is:" ,total_1, "dollars.")
+
+price_2 = float(input("Please enter the price of Item 2: "))
+subtotal_2 = price_2 * 1.07
+tax_item_2 = price_2 * 0.07
+total_2 = subtotal_1 + subtotal_2
+print("The subtotal is" ,subtotal_2, "dollars.")
+print("The tax on Item 2 is:" ,tax_item_2, "dollars.")
+print("The current total is:" ,total_2, "dollars.")
+
+price_3 = float(input("Please enter the price of Item 3: "))
+subtotal_3 = price_3 * 1.07
+tax_item_3 = price_3 * 0.07
+total_3 = subtotal_1 + subtotal_2 + subtotal_3
+print("The subtotal is" ,subtotal_3, "dollars.")
+print("The tax on Item 3 is:" ,tax_item_3, "dollars.")
+print("The current total is:" ,total_3, "dollars.")
+
+price_4 = float(input("Please enter the price of Item 4: "))
+subtotal_4 = price_4 * 1.07
+tax_item_4 = price_4 * 0.07
+total_4 = subtotal_1 + subtotal_2 + subtotal_3 + subtotal_4
+print("The subtotal is" ,subtotal_4, "dollars.")
+print("The tax on Item 4 is:" ,tax_item_4, "dollars.")
+print("The current total is:" ,total_4, "dollars.")
+
+price_5 = float(input("Please enter the price of Item 5: "))
+subtotal_5 = price_5 * 1.07
+tax_item_5 = price_5 * 0.07
+total_5 = subtotal_1 + subtotal_2 + subtotal_3 + subtotal_4 + subtotal_5
+print("The subtotal is" ,subtotal_5, "dollars.")
+print("The tax on Item 5 is:" ,tax_item_5, "dollars.")
+print("The current total is:" ,total_5, "dollars.")
+
+#8. Converts Temperature from Celsius to Fahrenheit
+
+Celsius = int(input("Please enter the temperature in Celsius: "))
+Fahrenheit = ((9/5) * Celsius) + 32
+print("The temperature is" ,Fahrenheit, "degrees Fahrenheit.")
+
+#9. Prints the prices of Krista's stock (when she bought and sold) and net profit
+
+num_shares_bought = 2000
+price_per_share1 = 40
+total_price_bought = num_shares_bought * price_per_share1
+commision_bought = 0.03 * total_price_bought
+total_price_bought = total_price_bought + commision_bought
+
+print("Krista paid" ,total_price_bought, "dollars for the stock.")
+print("Krista paid" ,commision_bought, "dollars for commision of the stock.")
+
+num_shares_sold = 2000
+price_per_share2 = 42.75
+total_price_sold = num_shares_sold * price_per_share2
+commision_sold = 0.03 * total_price_sold
+total_price_sold = total_price_sold - commision_sold
+
+print("Krista gained" ,total_price_sold, "dollars by selling the stock.")
+print("Krista paid" ,commision_sold, "dollars for commision of the stock.")
+
+profit = total_price_sold - total_price_bought 
+print("Krista made" ,profit, "dollars of profit.")
