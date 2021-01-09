@@ -1,0 +1,102 @@
+#Philip Huang
+#1/25/19
+#Assignment 3
+
+###1. Assigns grade
+##
+##score = float(input("Enter score: "))
+##if score >= A_score:
+##    print('Your grade is A')
+##else:
+##    if score >= B_score:
+##        print('Your grade is B')
+##    else:
+##        if score >= C_score:
+##            print('Your grade is C')
+##        else:
+##            if score >= D_score:
+##                print('Your grade is D')
+##            else:
+##                print('Your grade is F')
+
+#2. Compares the area of two rectangles
+
+length_1 = float(input("Enter the length of rectangle 1: "))
+width_1 = float(input("Enter the width of rectangle 1: "))
+length_2 = float(input("Enter the length of rectangle 2: "))
+width_2 = float(input("Enter the width of rectangle 2: "))
+
+area_1 = length_1 * width_1
+area_2 = length_2 * width_2
+
+if area_1 > area_2:
+    print("Rectangle 1 has a larger area than Rectangle 2.")
+elif area_1 == area_2:
+    print("Rectangle 1 has the same area as Rectangle 2.")
+else:
+    print("Rectangle 2 has a larger area than Rectangle 1.")
+                    
+
+#3. Tells user their stage of life
+
+age = int(input("Enter your age: "))
+
+if age >= 20:
+    print("You are an adult")
+elif age >= 13:
+     print("You are a teenager")
+elif age > 1:
+     print("You are a child")
+else:
+    print("You are a infant")
+
+#4. Result of two primary colors mixed
+color_1 = input("Enter a primary color: ")
+color_2 = input("Enter a primary color: ")
+   
+if color_1 == "red" and color_2 == "blue":
+    print("You get purple.")
+elif color_1 == "blue" and color_2 == "red":
+    print("You get purple.")
+elif color_1 == "yellow" and color_2 == "red":
+    print("You get orange.")
+elif color_1 == "red" and color_2 == "yellow":
+    print("You get orange.")
+elif color_1 == "yellow" and color_2 == "blue":
+    print("You get green.")
+elif color_1 == "blue" and color_2 == "yellow":
+    print("You get green.")
+else:
+    print("error")
+
+#5. Harry Potter Money Exchange
+
+knuts = int(input("Enter number of knuts: "))
+knuts_to_sickle = 29
+sickle_to_galleon = 17
+knuts_to_galleon = 493
+sickles = knuts // knuts_to_sickle
+galleon = sickles // sickle_to_galleon
+knuts_left = knuts - (knuts_to_sickle * sickles)
+sickles_left = sickles - (sickle_to_galleon * galleon)
+
+if sickles == 0:
+    print ("You have",knuts,"knuts")
+elif knuts % knuts_to_galleon == 0:
+    print("You have",galleon,"galleons")
+elif knuts % knuts_to_sickle == 0 and galleon == 0:
+    print("You have",sickles,"sickles")
+elif galleon != 0 and knuts_left == 0:
+    print("You have",galleon,"galleons and",sickles_left,"sickles")
+elif sickles_left == 0:
+    print("You have",galleon,"galleons and",knuts_left,"knuts")
+elif galleon != 0 and knuts_left != 0 and sickles_left != 0:
+    print("You have",galleon,"galleons and",sickles_left,"sickles and",knuts_left,"knuts")
+elif knuts % knuts_to_sickle != 0:
+    print("You have",sickles,"sickles and",knuts_left,"knuts")
+
+
+
+
+
+
