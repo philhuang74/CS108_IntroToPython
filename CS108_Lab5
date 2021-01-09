@@ -1,0 +1,133 @@
+#Philip Huang
+#2/14/19
+#Lab 5
+
+#1. Gives the numeric part (Temperature) of the sentence
+sentence = "The temperature today is going to be around >100 degrees F"
+number_part = sentence[45:48]
+print("The temperature is:", number_part, "degrees Fahrenheit")
+
+#2. Gives the index number of the first "d" in sentence
+sentence = "The temperature today is going to be around >100 degrees F"
+d_sentence = sentence.find("d")
+print("The index number of the first d found in sentence is", d_sentence)
+#The string method find gives the index number of the first time string "d" is found in the sentence
+
+#3. Describes what the optional arguments in find method achieves
+#The optional arguments in the find method are start and end ,and they represent
+#the index number where you can start and end (interval or range) to find the specific string object in the entire string.
+
+#4. Tells the index number range of temperature
+sentence = "The temperature today is going to be around >100 degrees F"
+index = sentence.find(">")
+temp_index = index+1
+index_2 = sentence.find(" degrees")
+print("The index number of temperature is", temp_index, "to", index_2)
+
+#5. (a) Decides if sentence is Pallindrome
+#Pseudocode: 
+#Need to check the first and last letters
+#Then the letter to the left moves up by one and the one on the right moves down
+#Repeat this until the right is not greater than the left, then the check should stop
+#if all left letter and right letter is same to this point, then it is Pallindrome
+#For part b, just have to get rid of all the punctuations and spaces, and follow the same as (a)
+
+sentence = input("Enter a sentence: ")
+left = 0
+right = len(sentence)-1
+while sentence[left] == sentence[right] and right > left:
+    left +=1
+    right -=1
+if sentence[left] == sentence[right]:
+    print("Yes, this is Pallindrome")
+else:
+    print("No, not a Pallindrome")
+
+#5. (b)
+sentence = input("Enter a sentence: ")
+sentence = sentence.replace(" ","")
+sentence = sentence.replace(",","")
+sentence = sentence.replace(".","")
+sentence = sentence.replace("'","")
+sentence = sentence.replace("!","")
+sentence = sentence.lower()
+
+left = 0
+right = len(sentence)-1
+while sentence[left] == sentence[right] and right > left:
+    left +=1
+    right -=1
+if sentence[left] == sentence[right]:
+    print("Yes, this is Pallindrome")
+else:
+    print("No, not a Pallindrome")
+
+#6.
+footyText = "Football refers to a number of sports that involve kicking a ball \
+with the foot to score a goal. The most popular of these sports worldwide is \
+association football, more commonly known as just 'football' or 'soccer'. \
+Unqualified, the word football applies to whichever form of football is the \
+most popular in the regional context in which the word appears, including \
+association football, as well as American football, Australian rules football, \
+Canadian football, Gaelic football, rugby league, rugby union, and other \
+related games. These variations of football are known as football codes.Various \
+forms of football can be identified in history, often as popular peasant games. \
+Contemporary codes of football can be traced back to the codification of these \
+games at English public schools in the eighteenth and nineteenth century. The \
+influence and power of the British Empire allowed these rules \
+of football to spread to areas of British influence outside of the directly \
+controlled Empire, though by the end of the nineteenth century, distinct \
+regional codes were already developing: Gaelic Football, for example, \
+deliberately incorporated the rules of local traditional football games in \
+order to maintain their heritage. In 1888, The Football League was founded in \
+England, becoming the first of many professional football competitions. During \
+the twentieth century, several of the various kinds of football grew to become \
+among the most popular team sports in the world."
+
+#for thing in footyText:
+#    print(thing)
+
+##Extra ,uses Count, NOT supposed to be in lab 
+#Test to confirm football is in footyText twenty times, 
+##footyText = footyText.replace(" ","")
+##footyText = footyText.replace(",","")
+##footyText = footyText.replace("'","")
+##footyText = footyText.replace(".","")  
+##footyText = footyText.replace("!","")
+##footyText = footyText.lower()
+##count = footyText.count("football")
+##print(count)
+
+#Pseudocode
+#Need to make sure footytext does not have punctuation and uppercases before using split
+#Then need to find the number of words, which can be done by counting the number of things in the split footy text variable
+#To find the times football shows up, this can be done if thing is equal to football in the for loop
+
+footyText = footyText.replace(",","")
+footyText = footyText.replace("'","")
+footyText = footyText.replace(".","")  
+footyText = footyText.replace("!","")
+footyText = footyText.lower()
+
+split_footyText = footyText.split()
+print(split_footyText)
+
+#####The split function seems to make a list of the words in footyText as strings
+
+count = 0
+for thing in split_footyText:
+    print(thing)
+    count+=1
+print("The number of words is:", count)
+
+###Instead of single characters being printed out one by one, it prints out each word one by one
+
+count = 0 
+for thing in split_footyText:
+    if thing == "football":
+        count+=1
+print("Football shows up", count, "times")
+
+
+
+
