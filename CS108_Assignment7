@@ -1,0 +1,119 @@
+#Philip Huang
+#2/5/19
+#Assignment 7
+
+#1. Function that compares two numbers and returns the greater number, or -1 if numbers are the same
+def compare(int1,int2):
+    '''returns the bigger number, or -1 if they are the same'''
+    if int1>int2:
+        return(int1)
+    elif int2>int1:
+        return(int2)
+    else:
+        return(-1)
+    
+#2. Function that returns letter grade given scores
+def calc_average(score1,score2,score3,score4,score5):
+    '''returns the average of five test scores'''
+    average=(score1+score2+score3+score4+score5)/5
+    return(average)
+
+def determine_grade(score):
+    '''returns letter grade of score'''
+    if score >= 90:
+        return("A")
+    elif score >= 80:
+        return("B")
+    elif score >= 70:
+        return("C")
+    elif score >= 60:
+        return("D")
+    else:
+        return("F")
+
+def question2_driver():
+    score1=float(input("Enter score: "))
+    score2=float(input("Enter score: "))
+    score3=float(input("Enter score: "))
+    score4=float(input("Enter score: "))
+    score5=float(input("Enter score: "))
+    score=calc_average(score1,score2,score3,score4,score5)
+    letter=determine_grade(score)
+    print("The letter grade is:", letter)
+
+#3. Functions for if a number is prime
+def isPrime(number):
+    '''returns true if number is prime, false otherwise'''
+    for num in range(2,number):          
+        if number % num == 0:
+            return("False")
+    if number == 1:
+        return("False")
+    #I accounted for 1
+    else:
+        return("True")
+
+def question3_driver():
+    number=int(input("Enter an integer: "))
+    isLarge=isPrime(number)
+    print("The number is prime is:",isLarge)
+
+#4. Function that returns the prime numbers from 1 to 100
+def primefrom1to100():
+    '''displays the prime numbers from 1 to 100'''
+    for number in range(1,101):
+        if isPrime(number) == "True":
+            print(number)
+            #I assumed display means print
+    
+#5. Function returns a list of numbers greater than n from a list
+def listgreaterthannumber(list,n):
+    '''returns the list of numbers greater than n'''
+    newlist=[]
+    for number in list:
+        if number>n:
+            newlist.append(number)
+    return(newlist)
+
+#6. Compares two files of MC answers and determines pass or fail
+def studentanswer():
+    '''returns the student answers in a list'''
+    filename1 = "answers.txt"
+    file1 = open(filename1,"r")
+    data1 = file1.read()
+    studentlist = data1.split('\n')
+    file1.close()
+    return(studentlist)
+
+def correctanswer():
+    '''returns the student answers in a list'''
+    filename2 = "correct.txt"
+    file2 = open(filename2,"r")
+    data2 = file2.read()
+    correctlist = data2.split("\n")
+    file2.close()
+    return(correctlist)
+
+
+def compareanswer(studentlist,correctlist):
+    '''returns number of correct answers in student answers'''
+    index = 0
+    correct = 0
+    for index in range(len(studentlist)):
+        if correctlist[index] == studentlist[index]:
+            correct+=1
+        index+=1
+    return(correct)
+ 
+def passexam(passinggrade):
+    '''determines if you passed or failed the exam given passing grade percentage'''
+    studentlist=studentanswer()
+    correctlist=correctanswer()
+    corrects=compareanswer(studentlist,correctlist)
+    total = len(studentlist)
+    grade = (corrects/total)*100
+    if grade >= passinggrade:
+        print("You passed the exam!")
+    else:
+        print("You failed")
+        # I assumed determine means print
