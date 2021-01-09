@@ -1,0 +1,129 @@
+#Philip Huang
+#3/11/19
+#Assignment 8
+
+import random
+
+#1. Dictionary of US States (keys) and capitals (values)
+def usstates():
+    '''returns a dictionary of US states as keys and capitals as values'''
+    capitaldict = {}
+    capitaldict["Alabama"] = "Montgomery"
+    capitaldict["Alaska"] = "Juneau"
+    capitaldict["Arizona"] = "Phoenix"
+    capitaldict["Arkansas"] = "Little Rock"
+    capitaldict["California"] = "Sacramento"
+    capitaldict["Colorado"] = "Denver"
+    capitaldict["Connecticut"] = "Hartford"
+    capitaldict["Delaware"] = "Dover"
+    capitaldict["Florida"] = "Tallahassee"
+    capitaldict["Georgia"] = "Atlanta"
+    capitaldict["Hawaii"] = "Honolulu"
+    capitaldict["Idaho"] = "Boise"
+    capitaldict["Illinois"] = "Springfield"
+    capitaldict["Indiana"] = "Indianapolis"
+    capitaldict["Iowa"] = "Des Moines"
+    capitaldict["Kansas"] = "Topeka"
+    capitaldict["Kentucky"] = "Frankfort"
+    capitaldict["Louisiana"] = "Baton Rouge"
+    capitaldict["Maine"] = "Augusta"
+    capitaldict["Maryland"] = "Annapolis"
+    capitaldict["Massachusetts"] = "Boston"
+    capitaldict["Michigan"] = "Lansing"
+    capitaldict["Minnesota"] = "St. Paul"
+    capitaldict["Mississippi"] = "Jackson"
+    capitaldict["Missouri"] = "Jefferson City"
+    capitaldict["Montana"] = "Helena"
+    capitaldict["Nebraska"] = "Lincoln"
+    capitaldict["Nevada"] = "Carson City"
+    capitaldict["New Hampshire"] = "Concord"
+    capitaldict["New Jersey"] = "Trenton"
+    capitaldict["New Mexico"] = "Santa Fe"
+    capitaldict["New York"] = "Albany"
+    capitaldict["North Carolina"] = "Raleigh"
+    capitaldict["North Dakota"] = "Bismarck"
+    capitaldict["Ohio"] = "Columbus"
+    capitaldict["Oklahoma"] = "Oklahoma City"
+    capitaldict["Oregon"] = "Salem"
+    capitaldict["Pennsylvania"] = "Harrisburg"
+    capitaldict["Rhode Island"] = "Providence"
+    capitaldict["South Carolina"] = "Columbia"
+    capitaldict["South Dakota"] = "Pierre"
+    capitaldict["Tennessee"] = "Nashville"
+    capitaldict["Texas"] = "Austin"
+    capitaldict["Utah"] = "Salt Lake City"
+    capitaldict["Vermont"] = "Montpelier"
+    capitaldict["Virginia"] = "Richmond"
+    capitaldict["Washington"] = "Olympia"
+    capitaldict["West Virginia"] = "Charleston"
+    capitaldict["Wisconsin"] = "Madison"
+    capitaldict["Wyoming"] = "Cheyenne"    
+    return(capitaldict)
+
+    
+def capGame(capitaldict):
+    '''takes in a dictionary of states (keys) and capitals (values) to generate a guessing game, returns number of correct guesses'''
+    statelist = []
+    for key in capitaldict:
+        statelist.append(key)
+    count = 0
+    for iteration in range(10):
+        computer_state = random.randint(0,50)
+        computer_guess = statelist[computer_state]
+        print("What is the capital of:", computer_guess,"?")
+        human_guess = input("The capital is: ")
+        if human_guess == capitaldict[computer_guess]:
+            count += 1
+    return(count)
+
+def capGameDriver():
+    dictionary = usstates()
+    count = capGame(dictionary)
+    print("You got", count, "out of 10 correct.")
+
+#2. Gives the MLB team that won the title given the year and how many titles they have won from 1903-2008
+def timeswondict():
+    '''returns a dictionary with teams (keys) and number of titles (values)'''
+    filename = "WorldSeries.txt"    
+    file = open(filename, "r")
+    data = file.read()
+    file.close()
+    baseballdict={}
+    stringlist = data.split("\n")
+    for word in stringlist:
+        if word in baseballdict:
+            baseballdict[word] += 1
+        else:
+            baseballdict[word] = 1
+    return(baseballdict)
+
+def whowondict():
+    '''returns a dictionary with year (keys) and team (values)'''
+    filename = "WorldSeries.txt"    
+    file = open(filename, "r")
+    data = file.read()
+    file.close()
+    yeardict={}
+    year=1903
+    stringlist = data.split("\n")
+    for team in stringlist:
+        yeardict[year] = team
+        year+=1
+    return(yeardict)
+
+def whowon(year):
+    '''enter year from 1903-2008'''
+    baseballdict = timeswondict()
+    yeardict = whowondict()
+    print("The team that won in", year, "is", yeardict[year],"and this team won", baseballdict[yeardict[year]], "titles")
+    
+#3. Recursive function for printing astericks
+def recLin(num):
+    '''takes num and prints pyramid of astericks of num size'''
+    if num == 1 or num == 0:
+        print(num*"*")
+    else:
+        recLin(num-1)
+        print(num*"*")
+                 
+
