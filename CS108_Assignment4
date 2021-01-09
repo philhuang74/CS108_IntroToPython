@@ -1,0 +1,44 @@
+#Philip Huang
+#1/4/19
+#Assignment 4
+
+#1. Bode's Law, calculates distance between bodies in solar system and sun 
+n=1
+while n<10:
+    print("n is", n)
+    Distance_nth_planet = (4 + 3 * (2 ** (n-2))) / 10
+    print("Distance is", Distance_nth_planet, "astronomical units")
+    n+=1
+
+#(b). Bode's Law works very well, and gives a very similar answer of the actual distances
+
+#2. Calculates heat index or wind chill depending on temperature 
+
+temperature = float(input("Enter temperature in Fahrenheit: "))
+
+if temperature > 80:
+    relative_humidity = float(input("Enter relative humidity percentage value: "))
+    if relative_humidity > 40:
+        heat_index = -42.379 + (2.04901523 * temperature)\
+                     + (10.14333127 * relative_humidity)\
+                     - (0.22475541 * temperature * relative_humidity)\
+                     - (6.83783 * 10 ** (-3) * temperature ** 2)\
+                     - (5.481717 * 10 ** (-2) * relative_humidity ** 2)\
+                     + (1.22874 * 10 ** (-3) * temperature ** 2 * relative_humidity)\
+                     + (8.5282 * 10 ** (-4) * temperature * relative_humidity ** 2)\
+                     - (1.99 * 10 ** (-6) * temperature ** 2 * relative_humidity ** 2 )
+        print("Heat index is:", heat_index, "Fahrenheit")
+    else:
+        print("Heat index does not apply")
+elif temperature > 50:
+    print("Neither wind chill or heat index applies")
+else:
+    wind_speed = float(input("Enter wind speed (mph): "))
+    if wind_speed > 3:
+        wind_chill = 35.74 + ( 0.6215 * temperature )\
+                     - ( 35.75 * wind_speed**(0.16) )\
+                     + ( 0.4275 * temperature * wind_speed**(0.16) )
+        print("Wind chill is:", wind_chill, "Fahrenheit")
+    else:
+        print("Wind Chill does not apply")
+
