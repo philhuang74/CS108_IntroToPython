@@ -1,0 +1,102 @@
+#Philip Huang
+#1/24/19
+#Lab_2
+
+#1. Classifies your grade level based on courses completed
+
+courses = int(input("Enter the number of courses completed: "))
+if courses < 9:
+    print("You are a freshman.")
+elif courses < 17:
+    print("You are a sophomore.")
+elif courses < 25:
+    print("You are a junior.")
+else:
+    print("You are a senior.")
+
+#2. Determines the amount of fine with variations of speed limit
+
+miles_per_hour = int(input("Enter speed in mph: "))
+speed_limit = int(input("Enter speed limit: "))
+speed_over = miles_per_hour - speed_limit
+
+if miles_per_hour <= speed_limit:
+    print("Your speed is legal.")
+else:
+    price = 50 + (speed_over * 5)
+    print("You're speeding.")
+    if miles_per_hour > 80:
+        price = price + 300
+    print("Your fine is" ,price, "dollars.")
+
+
+#3. Prints invalid if month, day, and year are over the limit
+
+month = int(input("Enter a month: "))
+day = int(input("Enter a day: "))
+year = int(input("Enter a year: "))
+
+if month > 12:
+    print("Date is Invalid, month does not exist.")
+elif month < 0:
+    print("Date is Invalid, month does not exist.")    
+elif day > 31:
+    print("Date is Invalid, day does not exist.")
+elif day < 0:
+    print("Date is Invalid, day does not exist.")
+elif year > 9999:
+    print("Date is Invalid, year does not exist.")
+elif year < 0:
+    print("Date is Invalid, year does not exist.")
+else:
+    print("The date is Valid")
+
+#4. Basketball, tells you if safe considering the lead and time left
+
+points = int(input("Enter opponents number of points lead: "))
+points = points - 3
+possesion = input("Does the team have the ball: ")
+
+if possesion == 'Yes' or 'yes':
+    points = points + .5
+else:
+    points = points - .5
+
+if points < 0:
+    points = 0
+else:
+    points = points ** 2
+
+seconds_left = float(input("Enter seconds left in game: "))
+
+if points > seconds_left:
+    print("Lead is safe")
+else:
+    print("Lead is not safe")
+
+#5. Hot dogs and buns needed to feed the party
+
+people = int(input("Enter number of people: "))
+hotdogs_person = int(input("Enter hot dog serving per person: "))
+
+total_hotdog = people * hotdogs_person
+
+dogs = total_hotdog // 10
+buns = total_hotdog // 8
+
+if total_hotdog % 10 != 0:
+    dogs = dogs + 1
+    
+print("You require" ,dogs, "packages of hotdogs.")
+
+if total_hotdog % 8 != 0:
+    buns = buns + 1
+   
+print("You require" ,buns, "packages of hotdog buns.")
+
+dogs = (dogs * 10) - total_hotdog
+buns = (buns * 8) - total_hotdog
+
+print("You have" ,dogs, "hotdogs leftover.")
+print("You have" ,buns, "hotdog buns leftover.")
+   
