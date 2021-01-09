@@ -1,0 +1,95 @@
+#Philip Huang
+#3/14/19
+#Lab 9
+
+import string
+
+#1. 
+#a. Function that reads file and returns a string without punctuation and lower cased
+def gettysburg(filename):
+    '''returns full text in file lowercased with no punctuation as string'''
+    file = open(filename, "r")
+    data = file.read()
+    data = data.lower()
+    file.close()
+    for punctuation in string.punctuation:
+        data = data.replace(punctuation,"")
+    return(data)
+
+#b. Function for returning a dictionary where keys is words and values is occurence of words in text
+def gettydict(string):
+    '''returns dictionary of words as keys and number of times words shows up in string as value'''
+    dictionary = {}
+    wordcount = 0
+    string = string.split()
+    for word in string:
+        if word in dictionary:
+            dictionary[word] += 1
+        else:
+            dictionary[word] = 1     
+        wordcount+=1
+    print("The total wordcount is:", wordcount)
+    return(dictionary)
+
+#c.Driver function that prints the dictionary of gettysburg text
+def drivergettysburg():
+    filename="getty.txt"
+    getty=gettysburg(filename)
+    dictionary=gettydict(getty)
+    print("The dictionary is:", dictionary)
+
+#d. Function that prints words as keys from highest count to lowest count
+#My ALGORITHM on paper went something like this
+#First I want to take the dictionaries keys and values and turn them into lists
+#Need To get the order of the word according to value count from greatest to lowest
+#Then I need to make sure the values in the list only appear once and are distinct
+#Then I need to look at every number in the list and if the value is the same as the number, we print the keys, which is the words
+
+def wordandcount(newDict):
+    '''takes in dictionary and prints out word and word count according to word count'''
+    listkeys=list(newDict)
+    #print(listkeys) this creates a list for the keys
+    listvalues=[]
+    for keys in newDict:
+        listvalues.append(newDict[keys])
+    #print(listvalues) this creates a list for the count values
+
+    listvalues.sort(reverse=True)
+    #print(listvalues) this sorts the count values from highest to lowest
+
+    newlist=[]
+    for number in listvalues:
+        if number not in newlist:
+            newlist.append(number)
+    #print(newlist) this list reduces the redundancy in the same numbers
+
+    for number in newlist:       
+        for keys in newDict:
+            if newDict[keys] == number:
+                print("Word:",keys, " Count:", newDict[keys])
+
+#e,f Driver function for choosing two text and printing the word count and words and count from highest to lowest if desired
+
+def tennis(filename):
+    '''returns full text in lowercase with no punctuation as string'''
+    file = open(filename, "r")
+    data = file.read()
+    data=data.lower()
+    file.close()
+    for punctuation in string.punctuation:
+        data = data.replace(punctuation,"")
+    return(data)
+#same redundant function as gettysburg(filename) that reads the file and returns a string cleared of punctuation and lower cased
+
+def main():
+    print("Welcome to the text processor")
+    choice=input("Enter file (getty) or (tennis): ")
+    if choice == "getty":
+        filename = "getty.txt"
+    else:
+        filename = "tennis.txt"
+    getty = gettysburg(filename)
+    dictionary = gettydict(getty)
+    printword = input("Enter (yes) to print words: ")
+    if printword == "yes":
+        wordandcount(dictionary)
