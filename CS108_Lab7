@@ -1,0 +1,94 @@
+###Philip Huang
+###2/28/19
+###Lab 7
+##
+#####1.Join the first letters and first words of lines in file and prints them
+####
+####filename = "secret.txt"
+####file = open(filename,"r")
+####list = []
+####newlist = []
+####
+####for line in file:
+####    #print("Line:", line)
+####    print("First letter of line:", line[0])
+####    list.append(line[0])
+####    splitline = line.split()
+####    firstword = splitline[0]
+####    print("First word of line:", firstword)
+####    newlist.append(firstword)
+####
+####mystr = "".join(list)
+#####print(list)
+####print("The elements of the first letters joined is:", mystr)
+####mystr2 = " ".join(newlist)
+####print("The elements of the first words joined is:", mystr2)
+####
+####file.close()
+######
+###2.Gives the player who hit the most homeruns and the number of homeruns
+##
+import csv
+##
+##myFile = open('Batting.csv','rU')
+##
+##csvData = csv.reader(myFile)
+##max = 0
+##next(csvData)
+##for line in csvData:
+##    print("Line:", line)
+##    playerid = line[0]
+##    homerun = int(line[12])
+##    if homerun > max:
+##        max = homerun
+##        player = playerid
+##print("The most homeruns in a season is by",player,"who hit",max,"homeruns")
+##myFile.close()
+##
+##file = open('Master.csv','rU')
+##csvData2 = csv.reader(file)
+##next(csvData2)
+##for lines in csvData2:
+##    firstname = lines[16]
+##    lastname = lines[17]
+##    playerid2 = lines[1]
+##    if playerid2 == player:
+##        print(firstname,lastname,"hit",max,"hrs in one season")
+##        break
+##file.close()
+##
+#3.Gives average closing price of stock over period
+
+myFile = open('google-closing-price.csv','rU')
+
+csvData = csv.reader(myFile)
+
+
+price = 0
+list = []
+for line in csvData:
+    newprice = float(line[0])
+    list.append(newprice)
+    price += newprice
+    total = len(list)
+    average = price/total
+print("Average closing price: $", average)
+myFile.close()
+    
+###4. Gives the number of unprovoked sharks
+##dataFile = open('Sharks.csv','rU',encoding='ISO-8859-1"')
+##
+##csvData = csv.reader(dataFile)
+##
+##next(csvData)
+##count = 0
+##for line in csvData:
+##    unprovoked = line[2]
+##    year = int(line[1])
+##    country = line[3]
+##    if year >= 1990:
+##        if country == "USA":
+##            if unprovoked == "Unprovoked":
+##                count += 1
+##print("The number of unprovoked sharks:", count)
+##dataFile.close()
