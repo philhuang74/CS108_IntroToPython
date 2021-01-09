@@ -1,0 +1,132 @@
+#Philip Huang
+#3/7/19
+#Lab 8
+
+import math
+import csv
+
+#1. Functions for a list of integers
+
+def createlist():
+    '''prints the list of integers'''
+    integer = int(input("Enter number of integers: "))
+    list = []
+    for number in range(integer):
+        integers = int(input("Enter number: "))
+        list.append(integers)
+    print(list)
+
+def lab8part1a():
+    '''calls the function createlist'''
+    createlist()
+    
+def createList2():
+    '''returns list given the length of list'''
+    integer = int(input("Enter number of integers: "))
+    list = []
+    for number in range(integer):
+        integers = int(input("Enter number: "))
+        list.append(integers)
+    return(list)
+
+def lab8part1b():
+    answer = createList2()
+    print("The list is:", answer)
+
+def createList3(integer):
+    '''returns a list of numbers given integer of the length of list'''
+    list = []
+    for number in range(integer):
+        integers = int(input("Enter number: "))
+        list.append(integers)
+    return(list)
+
+def lab8part1c():
+    integer = int(input("Enter number of integers: "))
+    answer = createList3(integer)
+    print("The list is", answer)
+    
+#2.Function for distance to lightning
+def milesdistancetolightning(time):
+    '''returns the distance to lightning given time in seconds'''
+    distance = time*1100*(1/5280)
+    return(distance)
+
+def lab8part2():
+    time = float(input("Enter time in seconds between lightning flash and the sound of it: "))
+    answer = milesdistancetolightning(time)
+    print("The distance to lightning is:", answer, "miles.")
+
+#3.Function for area of traingel
+def areaoftriangle(a,b,c):
+    '''returns area of triangle given three side lengths a,b,c in inches'''
+    s = (a+b+c)/2
+    area = math.sqrt(s*(s-a)*(s-b)*(s-c))
+    return(area)
+    
+def lab8part3():
+    sidea = int(input("Enter length of side in inches: "))
+    sideb = int(input("Enter length of side in inches: "))
+    sidec = int(input("Enter length of side in inches: "))
+    answer = areaoftriangle(sidea,sideb,sidec)
+    print("The area of triange is:", answer, "inches")
+
+#4. Function of overall average of MPG and MPG given gallons and miles
+def calcMPG(miles,gallons):
+    '''returns MPG'''
+    MPG = miles/gallons
+    return(MPG)
+
+def averageMPG(listofMPG):
+    '''returns average of MPG'''
+    average = sum(listofMPG)/len(listofMPG)
+    return(average)
+    
+def driveMPG():
+    list = []
+    gallons = float(input("Enter the gallons used (-1 to end): "))
+    while gallons != -1:
+        miles = float(input("Enter the miles driven: "))
+        MPG = calcMPG(miles,gallons)
+        print("The miles/gallon for this tank was:", MPG)
+        list.append(MPG)
+        gallons = float(input("Enter the gallons used (-1 to end): "))
+    average = averageMPG(list)
+    print("The overall average MPG:", average)
+
+#5.Function for average price of Google stock
+
+def googlestockfile():
+    '''returns list of google stocks'''
+    myFile = open('google-closing-price.csv','rU')
+    csvData = csv.reader(myFile)
+    listofstock = []
+    for line in csvData:
+        newprice = float(line[0])
+        listofstock.append(newprice)
+    myFile.close()
+    return(listofstock)
+
+def avrglist(listofstock):
+    '''returns average of stocks'''
+    price = sum(listofstock)
+    total = len(listofstock)
+    average = price/total
+    return(average)
+
+#Notice this is the same function of average in MPG problem
+#Since functions are correlated, you could use the same function
+
+def driverstock():
+    listofstock = googlestockfile()
+    average = avrglist(listofstock)
+    print("The average closing price is:", average)
+    count=1
+    list=[]
+    for elements in listofstock:
+        list.append(count)
+        count+=1
+    list.append(0)
+    list.sort()
+    print("The list of numbers from 0 to len of list:", list)
+
