@@ -1,0 +1,133 @@
+#Philip Huang
+#2/17/19
+#Assignment_6
+
+#1. Given an string of even length, print the first and second half 
+#S="time"
+S=input("Enter even length string: ")
+if len(S) % 2 == 0:
+    half = len(S)//2
+    end = len(S)
+    part1 = S[0:half]
+    part2 = S[half:end]
+    print("The first half of string is:", part1)
+    print("The second half of string is:", part2)
+else:
+    print("This is not an even length string")
+
+#2. Given an string of odd length, print the middle character,
+#and print the first and second half excluding the middle character
+
+#S="zebra"
+S=input("Enter odd length string: ")
+if len(S) % 2 != 0:
+    half = len(S) // 2
+    middle=S[half]
+    second_start = half + 1
+    end = len(S)
+    part1 = S[0:half]
+    part2 = S[second_start:end]
+    print("The first half of string is:", part1)
+    print("The middle character is:", middle)
+    print("The second half of string is:", part2)
+else:
+    print("This is not an odd length string")
+
+#3. Replaces a character in the string given the index number 
+word = input("Enter a string: ")
+character = input("Enter a character: ")
+index_number = int(input("Enter the index number: "))
+if index_number < 0 or index_number >= len(word):
+    print(word)
+else:
+    word = list(word)
+    word[index_number] = character
+    word = "".join(word)
+    print(word)
+
+
+#4. Replaces the first character of each word in sentence to "z"
+sentence = input("Enter a sentence: ")
+sentence = sentence.split()
+
+for word in sentence:
+    word = word.replace(word[0],"z")
+    print(word)
+    
+#5. Gives the sum, average, max, min, and list of a number of integers
+list = []
+integer = int(input("Enter number of integers: "))
+count = 0
+while count < integer :
+    number = int(input("Enter a number: "))
+    list.append(number)
+    count += 1    
+print("This is the list:", list)
+
+sum = sum(list)
+average = sum / integer
+max = max(list)
+min = min(list)
+
+print("The sum is", sum)
+print("The average is", average)
+print("The max is", max)
+print("The min is", min)
+
+#6. Gives the course with the highest and lowest scores. Also gives average grade of three courses
+
+list = []
+for i in range(3):
+    course = input("Enter course: ")
+    professor = input("Enter name of Professor: ")
+    overall_grade = float(input("Enter overall grade of class: "))    
+
+    classes = []
+    classes.append(course)
+    classes.append(professor)
+    classes.append(overall_grade)
+    list.append(classes)
+
+max = list[0][2]
+coursehigh = list[0][0]
+for thing in list:
+    if thing[2] > max:
+        max = thing[2]
+        coursehigh = thing[0]
+
+min = list[0][2]
+courselow = list[0][0]
+for stuff in list:
+    if stuff[2] < min:
+        min = stuff[2]
+        courselow = stuff[0]
+
+average=(list[0][2]+list[1][2]+list[2][2])/3
+
+print("The course with highest score is",coursehigh,"with a score of", max)
+print("The course with lowest score is",courselow,"with a score of", min)
+print("The average score of the three classes is",average)
+
+#7. prints the number of solutions and combinations of quadratic formula from -50 to 50
+#for variables a,b,c
+
+solution = 0
+combinations = 0
+
+for a in range(-50,51):
+    for b in range(-50,51):
+        for c in range(-50,51):
+            if a != 0:
+                xplus =  (-b + (b**2 - 4 * a * c)**0.5) / (2 * a)
+                xminus = (-b - (b**2 - 4 * a * c)**0.5) / (2 * a)
+
+                check_plus = a * xplus**2 + b * xplus + c
+                check_minus = a * xminus**2 + b * xminus + c
+                combinations += 1
+                if check_plus == 0 and check_minus == 0:
+                    solution += 1
+
+#combinations = 100*101*101
+
+print("There are",solution,"solution(s)")
+print("There are", combinations, "combination(s)")
