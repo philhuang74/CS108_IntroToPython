@@ -1,0 +1,85 @@
+#Philip Huang
+#2/21/19
+#Lab_6
+
+import urllib.request
+import ssl
+
+#1. Gives the index value and name of parasite given sequence
+filename = "parasites.txt"
+
+file = open(filename, "r")
+
+data = file.read()
+
+subsequence = input("Enter a subsequence: ")
+
+index_num = data.find(subsequence)
+
+if index_num != -1:
+    print("The index number of the first occurence is", index_num)
+    indexname = data.rfind(">",0,index_num)
+    indexname += 1
+    index_2 = data.find("\n",indexname)
+    name = data[indexname:index_2]
+    print("The name of parasite is:", name)
+else:
+    print("Subsequence not found.")
+
+file.close()
+
+#2. Gives the temperature 
+filename = "weather3.html"
+
+file = open(filename, "r")
+
+data = file.read()
+
+start = "Feels like"
+index1 = data.find(start)
+index1 += len(start)
+index2 = data.find("&deg")
+
+temperature = data[index1:index2]
+
+print("The temperature is:", temperature, "degrees Fahrenheit")
+
+#3. Gives the real time temperature on website
+#import urllib.request
+#import ssl
+#I did the import on the top of the code too because I didn't understand where the top of the code meant
+
+context = ssl._create_unverified_context()
+connection = urllib.request.urlopen("http://www.ajc.com/weather/30301/", context=context)
+weatherData = str(connection.read())
+
+start = "Feels like"
+index1 = weatherData.find(start)
+index1 += len(start)
+index2 = index1 + 3
+temperature = weatherData[index1:index2]
+print("The temperature is:", temperature, "degrees Fahrenheit")
+connection.close()
+
+#4. Gives the emails of CS Deperment from Union website
+#import urllib.request
+#import ssl
+
+context = ssl._create_unverified_context()
+connection = urllib.request.urlopen("http://cs.union.edu/CSDEPT/staff/", context=context)
+UnionData = str(connection.read())
+
+x=0
+start = "mailto:"
+indexstop = 0
+while indexstop != -1:
+    index1 = UnionData.find(start,x)
+    indexstop = index1
+    if indexstop != -1:
+        index1 += len(start)
+        index2 = UnionData.find('">',index1)
+        email = UnionData[index1:index2]
+        print("The email is:", email)
+        x = index2
+    
+connection.close()
